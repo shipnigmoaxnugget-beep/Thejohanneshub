@@ -372,6 +372,7 @@ const games = [
   category: "sussy",
   url: "https://www.youtube.com/embed/7Qwq9R3rQic?si=FD5dj7AqQzDm1YCF",
   image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif"
+  type: "yt",
 },
  
 {
@@ -379,55 +380,63 @@ title:"sussy haha",
 category:"sussy",
 url:"https://www.youtube.com/embed/XM6QTyWo820?si=QXqA-H0PqaHCXlq4",
 image:"https://tenor.com/de-AT/view/ayo-sus-gif-27096256.gif",
+type: "yt"
 },
 
 {
 title:"sussyman episode 1",
 category:"sussy",
 url:"https://www.tiktok.com/@follow67420/video/7619238987055762706",
-image:"https://m.media-amazon.com/images/I/71IHB9-yapL.png"
+image:"https://m.media-amazon.com/images/I/71IHB9-yapL.png",
+type: "tiktok"
 },
 
 {
 title:"SpacePinball",
 category:"sussy",
 url:"https://cdn.htmlgames.com/SpacePinball/",
-image:"https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128"
+image:"https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128",
+type: "yt"
 },
 
 {
 title:"Higher or Lower",
 category:"sussy",
 url:"https://cdn.htmlgames.com/HigherOrLower/",
-image:"https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp"
+image:"https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp",
+type: "yt"
 },
  
 {
 title:"City Sniper",
 category:"sussy",
 url:"https://cdn.htmlgames.com/CitySniper/",
-image:"https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png"
+image:"https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png",
+type: "yt"
 },
 
 {
 title:"Thief Puzzle",
 category:"sussy",
 url:"https://play.famobi.com/thief-puzzle",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
+image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
+type: "yt"
 },
 
 {
 title:"geometry dash",
 category:"sussy",
 url:"https://gdbrowser.com",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
+image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
+type: "yt"
 },
 
 {  
 title:"GalaxyShooter",
 category:"racing",
 url:"https://cdn.htmlgames.com/GalaxyShooter/",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
+image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
+type: "yt"
 }
 
 ];
@@ -436,16 +445,23 @@ image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
 // GAME START
 // =====================
 
-function openGame(url){
-  const modal = document.getElementById("gameModal");
+  function openGame(url, type) {
   const detail = document.getElementById("gameDetail");
-  detail.innerHTML = `<iframe src="${url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`;
-  modal.style.display = "block";
-}
 
-document.getElementById("closeGame").onclick = () => {
-  document.getElementById("gameModal").style.display = "none";
-  document.getElementById("gameDetail").innerHTML = "";
+  if (type === "tiktok") {
+    detail.innerHTML = `
+      <blockquote class="tiktok-embed" cite="${url}">
+        <a href="${url}"></a>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"><\/script>
+    `;
+  } else {
+    detail.innerHTML = `
+      <iframe src="${url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+    `;
+  }
+
+  document.getElementById("gameModal").style.display = "block";
 };
 
 // =====================
