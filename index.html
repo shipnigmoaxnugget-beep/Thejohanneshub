@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -18,6 +17,113 @@ body{
 background:#0f0f0f;
 color:white;
 font-family:Arial;
+}
+
+/* ===================== */
+/* PIN SCREEN            */
+/* ===================== */
+
+#pinScreen{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:#0f0f0f;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+#pinScreen h2{
+font-size:22px;
+margin-bottom:8px;
+color:#ff6b6b;
+letter-spacing:2px;
+}
+
+#pinScreen p{
+font-size:13px;
+color:#888;
+margin-bottom:30px;
+}
+
+.pin-dots{
+display:flex;
+gap:14px;
+margin-bottom:30px;
+}
+
+.dot{
+width:18px;height:18px;
+border-radius:50%;
+border:2px solid #ff6b6b;
+background:transparent;
+transition:background 0.15s;
+}
+
+.dot.filled{
+background:#ff6b6b;
+}
+
+.pin-grid{
+display:grid;
+grid-template-columns:repeat(3,80px);
+gap:12px;
+}
+
+.pin-btn{
+height:60px;
+background:#1a1a1a;
+border:1px solid #333;
+color:white;
+font-size:22px;
+border-radius:10px;
+cursor:pointer;
+transition:0.15s;
+}
+
+.pin-btn:hover{
+background:#2a2a2a;
+border-color:#ff6b6b;
+}
+
+.pin-btn:active{
+transform:scale(0.94);
+}
+
+.pin-btn.del{
+font-size:16px;
+color:#ff6b6b;
+}
+
+#pinError{
+margin-top:18px;
+color:#ff4444;
+font-size:14px;
+min-height:20px;
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake{
+0%{transform:translateX(0)}
+20%{transform:translateX(-8px)}
+40%{transform:translateX(8px)}
+60%{transform:translateX(-6px)}
+80%{transform:translateX(6px)}
+100%{transform:translateX(0)}
+}
+
+.shake{
+animation:shake 0.4s ease;
+}
+
+/* ===================== */
+/* MAIN CONTENT          */
+/* ===================== */
+
+#mainContent{
+display:none;
 }
 
 /* HEADER */
@@ -135,28 +241,125 @@ cursor:pointer;
 
 <body>
 
-<header class="header">
-<div class="logo">marlon ist super sussy🫣🫣</div>
-</header>
+<!-- ===================== -->
+<!-- PIN SCREEN            -->
+<!-- ===================== -->
 
-<section class="hero">
-<h1>Willkommen zu The sus videos</h1>
-</section>
+<div id="pinScreen">
+  <h2>🔒 GESPERRT</h2>
+  <p>Gib den 5-stelligen Code ein</p>
 
-<div class="main-wrapper">
-<div id="gamesContainer" class="games-grid"></div>
+  <div class="pin-dots" id="pinDots">
+    <div class="dot" id="d0"></div>
+    <div class="dot" id="d1"></div>
+    <div class="dot" id="d2"></div>
+    <div class="dot" id="d3"></div>
+    <div class="dot" id="d4"></div>
+  </div>
+
+  <div class="pin-grid">
+    <button class="pin-btn" onclick="pinPress('1')">1</button>
+    <button class="pin-btn" onclick="pinPress('2')">2</button>
+    <button class="pin-btn" onclick="pinPress('3')">3</button>
+    <button class="pin-btn" onclick="pinPress('4')">4</button>
+    <button class="pin-btn" onclick="pinPress('5')">5</button>
+    <button class="pin-btn" onclick="pinPress('6')">6</button>
+    <button class="pin-btn" onclick="pinPress('7')">7</button>
+    <button class="pin-btn" onclick="pinPress('8')">8</button>
+    <button class="pin-btn" onclick="pinPress('9')">9</button>
+    <button class="pin-btn del" onclick="pinDel()">⌫</button>
+    <button class="pin-btn" onclick="pinPress('0')">0</button>
+    <button class="pin-btn del" onclick="pinClear()">C</button>
+  </div>
+
+  <div id="pinError"></div>
 </div>
 
-<!-- MODAL -->
+<!-- ===================== -->
+<!-- MAIN CONTENT          -->
+<!-- ===================== -->
 
-<div id="gameModal" class="modal">
-<div class="modal-content">
-<button id="closeGame" class="close-btn">X</button>
-<div id="gameDetail" style="width:100%;height:100%;"></div>
-</div>
+<div id="mainContent">
+
+  <header class="header">
+    <div class="logo">marlon ist super sussy🫣🫣</div>
+  </header>
+
+  <section class="hero">
+    <h1>Willkommen zu The sus videos</h1>
+  </section>
+
+  <div class="main-wrapper">
+    <div id="gamesContainer" class="games-grid"></div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="gameModal" class="modal">
+    <div class="modal-content">
+      <button id="closeGame" class="close-btn">X</button>
+      <div id="gameDetail" style="width:100%;height:100%;"></div>
+    </div>
+  </div>
+
 </div>
 
 <script>
+
+// =====================
+// PIN LOGIK
+// =====================
+
+const CORRECT_PIN = "12345"; // <-- HIER deinen Code ändern
+let currentPin = "";
+
+function pinPress(num){
+  if(currentPin.length >= 5) return;
+  currentPin += num;
+  updateDots();
+  if(currentPin.length === 5){
+    setTimeout(checkPin, 150);
+  }
+}
+
+function pinDel(){
+  currentPin = currentPin.slice(0,-1);
+  updateDots();
+  document.getElementById("pinError").textContent = "";
+}
+
+function pinClear(){
+  currentPin = "";
+  updateDots();
+  document.getElementById("pinError").textContent = "";
+}
+
+function updateDots(){
+  for(let i=0;i<5;i++){
+    document.getElementById("d"+i).classList.toggle("filled", i < currentPin.length);
+  }
+}
+
+function checkPin(){
+  if(currentPin === CORRECT_PIN){
+    document.getElementById("pinScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+  } else {
+    document.getElementById("pinError").textContent = "❌ Falscher Code!";
+    document.getElementById("pinDots").classList.add("shake");
+    setTimeout(()=>{
+      document.getElementById("pinDots").classList.remove("shake");
+    }, 400);
+    currentPin = "";
+    updateDots();
+  }
+}
+
+// Tastatur-Support
+document.addEventListener("keydown", e => {
+  if(e.key >= "0" && e.key <= "9") pinPress(e.key);
+  if(e.key === "Backspace") pinDel();
+  if(e.key === "Escape") pinClear();
+});
 
 // =====================
 // SPIELE LISTE
@@ -227,7 +430,6 @@ url:"https://cdn.htmlgames.com/GalaxyShooter/",
 image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
 }
 
- 
 ];
 
 // =====================
@@ -235,20 +437,15 @@ image:"/cache/data/image/game/thief-puzzle-f200x200.webp"
 // =====================
 
 function openGame(url){
-
-const modal = document.getElementById("gameModal");
-const detail = document.getElementById("gameDetail");
-
-detail.innerHTML = `
-<iframe src="${url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-`;
-
-modal.style.display = "block";
+  const modal = document.getElementById("gameModal");
+  const detail = document.getElementById("gameDetail");
+  detail.innerHTML = `<iframe src="${url}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>`;
+  modal.style.display = "block";
 }
 
 document.getElementById("closeGame").onclick = () => {
-document.getElementById("gameModal").style.display = "none";
-document.getElementById("gameDetail").innerHTML = "";
+  document.getElementById("gameModal").style.display = "none";
+  document.getElementById("gameDetail").innerHTML = "";
 };
 
 // =====================
@@ -256,27 +453,19 @@ document.getElementById("gameDetail").innerHTML = "";
 // =====================
 
 function loadGames(){
-
-const container = document.getElementById("gamesContainer");
-container.innerHTML = "";
-
-games.forEach(game => {
-
-const div = document.createElement("div");
-div.className = "game-card";
-
-div.innerHTML = `
-<img src="${game.image}" class="game-image">
-<h3>${game.title}</h3>
-<button class="play-btn">Spielen</button>
-`;
-
-div.onclick = () => openGame(game.url);
- 
-container.appendChild(div);
-
-});
-
+  const container = document.getElementById("gamesContainer");
+  container.innerHTML = "";
+  games.forEach(game => {
+    const div = document.createElement("div");
+    div.className = "game-card";
+    div.innerHTML = `
+      <img src="${game.image}" class="game-image">
+      <h3>${game.title}</h3>
+      <button class="play-btn">Spielen</button>
+    `;
+    div.onclick = () => openGame(game.url);
+    container.appendChild(div);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", loadGames);
