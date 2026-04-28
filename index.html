@@ -371,7 +371,7 @@ const games = [
   title: "Sus Video nicht gucken privates",
   category: "sussy",
   url: "https://www.youtube.com/embed/7Qwq9R3rQic?si=FD5dj7AqQzDm1YCF",
-  image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif"
+  image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif",
   type: "yt"
 },
  
@@ -479,7 +479,7 @@ function loadGames(){
       <h3>${game.title}</h3>
       <button class="play-btn">Kucken</button>
     `;
-    div.onclick = () => openGame(game.url);
+    div.onclick = () => openGame(game.url, game.type);
     container.appendChild(div);
   });
 }
