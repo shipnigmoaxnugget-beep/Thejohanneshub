@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The johannes Hub🔛🔝🗿</title>
+<title>The Johannes Hub🗿🧑🏿‍🌾</title>
 
 <style>
 
@@ -18,10 +18,6 @@ background:#0f0f0f;
 color:white;
 font-family:Arial;
 }
-
-/* ===================== */
-/* PIN SCREEN            */
-/* ===================== */
 
 #pinScreen{
 position:fixed;
@@ -104,10 +100,9 @@ font-size:14px;
 min-height:20px;
 }
 
-/* SHAKE ANIMATION */
 @keyframes shake{
 0%{transform:translateX(0)}
-20%{transform:translateXr(-8px)}
+20%{transform:translateX(-8px)}
 40%{transform:translateX(8px)}
 60%{transform:translateX(-6px)}
 80%{transform:translateX(6px)}
@@ -118,15 +113,9 @@ min-height:20px;
 animation:shake 0.4s ease;
 }
 
-/* ===================== */
-/* MAIN CONTENT          */
-/* ===================== */
-
 #mainContent{
 display:none;
 }
-
-/* HEADER */
 
 .header{
 background:#1a1a1a;
@@ -142,15 +131,11 @@ font-size:24px;
 font-weight:bold;
 }
 
-/* HERO */
-
 .hero{
 background:linear-gradient(135deg,#ff6b6b,#ff8787);
 padding:40px;
 text-align:center;
 }
-
-/* MAIN */
 
 .main-wrapper{
 padding:20px;
@@ -158,15 +143,11 @@ max-width:1200px;
 margin:auto;
 }
 
-/* GRID */
-
 .games-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
 gap:20px;
 }
-
-/* GAME CARD */
 
 .game-card{
 background:#1a1a1a;
@@ -182,8 +163,6 @@ transform:translateY(-5px);
 border-color:#ff6b6b;
 }
 
-/* GAME IMAGE */
-
 .game-image{
 width:100%;
 height:140px;
@@ -191,8 +170,6 @@ object-fit:cover;
 border-radius:8px;
 margin-bottom:10px;
 }
-
-/* BUTTON */
 
 .play-btn{
 margin-top:10px;
@@ -204,8 +181,6 @@ color:white;
 border-radius:5px;
 cursor:pointer;
 }
-
-/* MODAL */
 
 .modal{
 display:none;
@@ -234,16 +209,13 @@ border:none;
 color:white;
 padding:10px;
 cursor:pointer;
+border-radius:5px;
 }
 
 </style>
 </head>
 
 <body>
-
-<!-- ===================== -->
-<!-- PIN SCREEN            -->
-<!-- ===================== -->
 
 <div id="pinScreen">
   <h2>🔒 GESPERRT</h2>
@@ -275,14 +247,10 @@ cursor:pointer;
   <div id="pinError"></div>
 </div>
 
-<!-- ===================== -->
-<!-- MAIN CONTENT          -->
-<!-- ===================== -->
-
 <div id="mainContent">
 
   <header class="header">
-    <div class="logo">marlon ist super sussy</div>
+    <div class="logo">johannes hub</div>
   </header>
 
   <section class="hero">
@@ -293,7 +261,6 @@ cursor:pointer;
     <div id="gamesContainer" class="games-grid"></div>
   </div>
 
-  <!-- MODAL -->
   <div id="gameModal" class="modal">
     <div class="modal-content">
       <button id="closeGame" class="close-btn">X</button>
@@ -305,11 +272,7 @@ cursor:pointer;
 
 <script>
 
-// =====================
-// PIN LOGIK
-// =====================
-
-const CORRECT_PIN = "69420"; // <-- HIER deinen Code ändern
+const CORRECT_PIN = "20489";
 let currentPin = "";
 
 function pinPress(num){
@@ -354,16 +317,11 @@ function checkPin(){
   }
 }
 
-// Tastatur-Support
 document.addEventListener("keydown", e => {
   if(e.key >= "0" && e.key <= "9") pinPress(e.key);
   if(e.key === "Backspace") pinDel();
   if(e.key === "Escape") pinClear();
 });
-
-// =====================
-// SPIELE LISTE
-// =====================
 
 const games = [
 
@@ -372,85 +330,74 @@ const games = [
   category: "sussy",
   url: "https://www.youtube.com/embed/7Qwq9R3rQic?si=FD5dj7AqQzDm1YCF",
   image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif",
-  type: "iframe"
-},
- 
-{
-title:"sussy haha",
-category:"sussy",
-url:"https://www.youtube.com/embed/XM6QTyWo820?si=QXqA-H0PqaHCXlq4",
-image:"https://tenor.com/de-AT/view/ayo-sus-gif-27096256.gif",
-type: "iframe"
+  type: "youtube"
 },
 
 {
-title:"sussyman episode 1",
-category:"sussy",
-url:"https://www.tiktok.com/@follow67420/video/7619238987055762706",
-image:"https://m.media-amazon.com/images/I/71IHB9-yapL.png",
-type: "tiktok"
+  title: "sussy haha",
+  category: "sussy",
+  url: "https://www.youtube.com/embed/XM6QTyWo820?si=QXqA-H0PqaHCXlq4",
+  image: "https://tenor.com/de-AT/view/ayo-sus-gif-27096256.gif",
+  type: "youtube"
 },
 
 {
-title:"SpacePinball",
-category:"sussy",
-url:"https://cdn.htmlgames.com/SpacePinball/",
-image:"https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128",
-type: "tiktok"
+  title: "sussyman episode 1",
+  category: "sussy",
+  url: "https://www.tiktok.com/@follow67420/video/7619238987055762706",
+  image: "https://m.media-amazon.com/images/I/71IHB9-yapL.png",
+  type: "tiktok"
 },
 
 {
-title:"Higher or Lower",
-category:"sussy",
-url:"https://cdn.htmlgames.com/HigherOrLower/",
-image:"https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp",
-type: "iframe"
-},
- 
-{
-title:"City Sniper",
-category:"sussy",
-url:"https://cdn.htmlgames.com/CitySniper/",
-image:"https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png",
-type: "iframe"
+  title: "SpacePinball",
+  category: "game",
+  url: "https://cdn.htmlgames.com/SpacePinball/",
+  image: "https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128",
+  type: "game"
 },
 
 {
-title:"Thief Puzzle",
-category:"sussy",
-url:"https://play.famobi.com/thief-puzzle",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
-type: "iframe"
+  title: "Higher or Lower",
+  category: "game",
+  url: "https://cdn.htmlgames.com/HigherOrLower/",
+  image: "https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp",
+  type: "game"
 },
 
 {
-title:"geometry dash",
-category:"sussy",
-url:"https://gdbrowser.com",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
-type: "iframe"
+  title: "City Sniper",
+  category: "game",
+  url: "https://cdn.htmlgames.com/CitySniper/",
+  image: "https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png",
+  type: "game"
 },
 
-{  
-title:"GalaxyShooter",
-category:"racing",
-url:"https://cdn.htmlgames.com/GalaxyShooter/",
-image:"/cache/data/image/game/thief-puzzle-f200x200.webp",
-type: "iframe"
+{
+  title: "Thief Puzzle",
+  category: "game",
+  url: "https://play.famobi.com/thief-puzzle",
+  image: "https://img.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg",
+  type: "game"
+},
+
+{
+  title: "Galaxy Shooter",
+  category: "game",
+  url: "https://cdn.htmlgames.com/GalaxyShooter/",
+  image: "https://cdn.htmlgames.com/GalaxyShooter/img/icon/icon-512x512.png",
+  type: "game"
 },
 
 ];
 
-// =====================
-// GAME START
-// =====================
-
-  function openGame(url, type) {
+function openGame(url, type){
   const detail = document.getElementById("gameDetail");
 
-  if (type === "tiktok") {
+  if(type === "tiktok"){
+    const videoId = url.split("/video/")[1];
     detail.innerHTML = `
-      <blockquote class="tiktok-embed" cite="${url}">
+      <blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}" style="max-width:605px;min-width:325px;margin:auto;">
         <a href="${url}"></a>
       </blockquote>
       <script async src="https://www.tiktok.com/embed.js"><\/script>
@@ -462,11 +409,13 @@ type: "iframe"
   }
 
   document.getElementById("gameModal").style.display = "block";
-};
+}
 
-// =====================
-// SPIELE LADEN
-// =====================
+// FIX: Close-Button funktioniert jetzt
+document.getElementById("closeGame").addEventListener("click", function(){
+  document.getElementById("gameModal").style.display = "none";
+  document.getElementById("gameDetail").innerHTML = "";
+});
 
 function loadGames(){
   const container = document.getElementById("gamesContainer");
@@ -475,7 +424,7 @@ function loadGames(){
     const div = document.createElement("div");
     div.className = "game-card";
     div.innerHTML = `
-      <img src="${game.image}" class="game-image">
+      <img src="${game.image}" class="game-image" alt="${game.title}">
       <h3>${game.title}</h3>
       <button class="play-btn">Kucken</button>
     `;
