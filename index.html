@@ -7,248 +7,247 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-background:#0f0f0f;
-color:white;
-font-family:Arial;
+body {
+  background: #0f0f0f;
+  color: white;
+  font-family: Arial;
 }
 
-#pinScreen{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:#0f0f0f;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:9999;
+#pinScreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
-#pinScreen h2{
-font-size:22px;
-margin-bottom:8px;
-color:#ff6b6b;
-letter-spacing:2px;
+#pinScreen h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #ff6b6b;
+  letter-spacing: 2px;
 }
 
-#pinScreen p{
-font-size:13px;
-color:#888;
-margin-bottom:30px;
+#pinScreen p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 30px;
 }
 
-.pin-dots{
-display:flex;
-gap:14px;
-margin-bottom:30px;
+.pin-dots {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
 }
 
-.dot{
-width:18px;height:18px;
-border-radius:50%;
-border:2px solid #ff6b6b;
-background:transparent;
-transition:background 0.15s;
+.dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ff6b6b;
+  background: transparent;
+  transition: background 0.15s;
 }
 
-.dot.filled{
-background:#ff6b6b;
+.dot.filled {
+  background: #ff6b6b;
 }
 
-.pin-grid{
-display:grid;
-grid-template-columns:repeat(3,80px);
-gap:12px;
+.pin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 12px;
 }
 
-.pin-btn{
-height:60px;
-background:#1a1a1a;
-border:1px solid #333;
-color:white;
-font-size:22px;
-border-radius:10px;
-cursor:pointer;
-transition:0.15s;
+.pin-btn {
+  height: 60px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  font-size: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.15s;
 }
 
-.pin-btn:hover{
-background:#2a2a2a;
-border-color:#ff6b6b;
+.pin-btn:hover {
+  background: #2a2a2a;
+  border-color: #ff6b6b;
 }
 
-.pin-btn:active{
-transform:scale(0.94);
+.pin-btn:active {
+  transform: scale(0.94);
 }
 
-.pin-btn.del{
-font-size:16px;
-color:#ff6b6b;
+.pin-btn.del {
+  font-size: 16px;
+  color: #ff6b6b;
 }
 
-#pinError{
-margin-top:18px;
-color:#ff4444;
-font-size:14px;
-min-height:20px;
+#pinError {
+  margin-top: 18px;
+  color: #ff4444;
+  font-size: 14px;
+  min-height: 20px;
 }
 
-@keyframes shake{
-0%{transform:translateX(0)}
-20%{transform:translateX(-8px)}
-40%{transform:translateX(8px)}
-60%{transform:translateX(-6px)}
-80%{transform:translateX(6px)}
-100%{transform:translateX(0)}
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-8px); }
+  40%  { transform: translateX(8px); }
+  60%  { transform: translateX(-6px); }
+  80%  { transform: translateX(6px); }
+  100% { transform: translateX(0); }
 }
 
-.shake{
-animation:shake 0.4s ease;
+.shake {
+  animation: shake 0.4s ease;
 }
 
-#mainContent{
-display:none;
+#mainContent {
+  display: none;
 }
 
-.header{
-background:#1a1a1a;
-padding:15px 20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+.header {
+  background: #1a1a1a;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo{
-color:#ff6b6b;
-font-size:24px;
-font-weight:bold;
+.logo {
+  color: #ff6b6b;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.hero{
-background:linear-gradient(135deg,#ff6b6b,#ff8787);
-padding:40px;
-text-align:center;
+.hero {
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+  padding: 40px;
+  text-align: center;
 }
 
-
-
-<style>
-  .btn-link {
-    /* Grundlegendes Aussehen */
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none; /* Entfernt die Unterstreichung */
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    transition: background-color 0.3s; /* Sanfter Übergang */
-  }
-
-  /* Hover-Effekt (Mauszeiger drüber) */
-  .btn-link:hover {
-    background-color: #0056b3;
-  }
-
-  /* Aktiver Zustand (beim Klicken) */
-  .btn-link:active {
-    background-color: #004085;
-    transform: translateY(1px); /* Leichter Drück-Effekt */
-  }
-</style>
-
-<a href="https://shipnigmoaxnugget-beep.github.io/the-johannesmoney/" class="btn-link">Marlon hier klicken zum zahl</a>
-
-
-
-.main-wrapper{
-padding:20px;
-max-width:1200px;
-margin:auto;
+.btn-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s;
+  margin-top: 15px;
 }
 
-.games-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
+.btn-link:hover {
+  background-color: #0056b3;
 }
 
-.game-card{
-background:#1a1a1a;
-padding:15px;
-border-radius:10px;
-border:1px solid #333;
-cursor:pointer;
-transition:0.3s;
+.btn-link:active {
+  background-color: #004085;
+  transform: translateY(1px);
 }
 
-.game-card:hover{
-transform:translateY(-5px);
-border-color:#ff6b6b;
+.btn-zahl {
+  display: inline-block;
+  background-color: #ff4757;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-.game-image{
-width:100%;
-height:140px;
-object-fit:cover;
-border-radius:8px;
-margin-bottom:10px;
+.btn-zahl:hover {
+  background-color: #cc3a47;
 }
 
-.play-btn{
-margin-top:10px;
-width:100%;
-padding:10px;
-background:#ff6b6b;
-border:none;
-color:white;
-border-radius:5px;
-cursor:pointer;
+.main-wrapper {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-.modal-content{
-width:90%;
-height:90%;
-margin:auto;
-margin-top:2%;
-position:relative;
+.game-card {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.close-btn{
-position:absolute;
-right:10px;
-top:10px;
-background:red;
-border:none;
-color:white;
-padding:10px;
-cursor:pointer;
-border-radius:5px;
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff6b6b;
 }
 
-<a href="deine-seite.html" 
-   target="_blank" 
-   style="display: inline-block; background-color: #ff4757; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-family: Arial, sans-serif; font-weight: bold;">
-   Hier Zahlen
-</a>
+.game-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
+.play-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #ff6b6b;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  margin-top: 2%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: red;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 </style>
 </head>
@@ -267,7 +266,6 @@ border-radius:5px;
     <div class="dot" id="d4"></div>
   </div>
 
-  
   <div class="pin-grid">
     <button class="pin-btn" onclick="pinPress('1')">1</button>
     <button class="pin-btn" onclick="pinPress('2')">2</button>
@@ -294,6 +292,9 @@ border-radius:5px;
 
   <section class="hero">
     <h1>Willkommen zu The sus videos</h1>
+    <a href="https://shipnigmoaxnugget-beep.github.io/the-johannesmoney/" class="btn-link">Marlon hier klicken zum zahl</a>
+    <br>
+    <a href="deine-seite.html" target="_blank" class="btn-zahl">Hier Zahlen</a>
   </section>
 
   <div class="main-wrapper">
@@ -314,41 +315,41 @@ border-radius:5px;
 const CORRECT_PIN = "20489";
 let currentPin = "";
 
-function pinPress(num){
-  if(currentPin.length >= 5) return;
+function pinPress(num) {
+  if (currentPin.length >= 5) return;
   currentPin += num;
   updateDots();
-  if(currentPin.length === 5){
+  if (currentPin.length === 5) {
     setTimeout(checkPin, 150);
   }
 }
 
-function pinDel(){
-  currentPin = currentPin.slice(0,-1);
+function pinDel() {
+  currentPin = currentPin.slice(0, -1);
   updateDots();
   document.getElementById("pinError").textContent = "";
 }
 
-function pinClear(){
+function pinClear() {
   currentPin = "";
   updateDots();
   document.getElementById("pinError").textContent = "";
 }
 
-function updateDots(){
-  for(let i=0;i<5;i++){
-    document.getElementById("d"+i).classList.toggle("filled", i < currentPin.length);
+function updateDots() {
+  for (let i = 0; i < 5; i++) {
+    document.getElementById("d" + i).classList.toggle("filled", i < currentPin.length);
   }
 }
 
-function checkPin(){
-  if(currentPin === CORRECT_PIN){
+function checkPin() {
+  if (currentPin === CORRECT_PIN) {
     document.getElementById("pinScreen").style.display = "none";
     document.getElementById("mainContent").style.display = "block";
   } else {
     document.getElementById("pinError").textContent = "❌ Falscher Code!";
     document.getElementById("pinDots").classList.add("shake");
-    setTimeout(()=>{
+    setTimeout(() => {
       document.getElementById("pinDots").classList.remove("shake");
     }, 400);
     currentPin = "";
@@ -357,83 +358,74 @@ function checkPin(){
 }
 
 document.addEventListener("keydown", e => {
-  if(e.key >= "0" && e.key <= "9") pinPress(e.key);
-  if(e.key === "Backspace") pinDel();
-  if(e.key === "Escape") pinClear();
+  if (e.key >= "0" && e.key <= "9") pinPress(e.key);
+  if (e.key === "Backspace") pinDel();
+  if (e.key === "Escape") pinClear();
 });
 
 const games = [
-
-{
-  title: "Sus Video nicht gucken privates",
-  category: "sussy",
-  url: "https://www.youtube.com/embed/7Qwq9R3rQic?si=FD5dj7AqQzDm1YCF",
-  image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif",
-  type: "youtube"
-},
-
-{
-  title: "sussy haha",
-  category: "sussy",
-  url: "https://www.youtube.com/embed/XM6QTyWo820?si=QXqA-H0PqaHCXlq4",
-  image: "https://tenor.com/de-AT/view/ayo-sus-gif-27096256.gif",
-  type: "youtube"
-},
-
-{
-  title: "sussyman episode 1",
-  category: "sussy",
-  url: "https://www.tiktok.com/@follow67420/video/7619238987055762706",
-  image: "https://m.media-amazon.com/images/I/71IHB9-yapL.png",
-  type: "tiktok"
-},
-
-{
-  title: "SpacePinball",
-  category: "game",
-  url: "https://cdn.htmlgames.com/SpacePinball/",
-  image: "https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128",
-  type: "game"
-},
-
-{
-  title: "Higher or Lower",
-  category: "game",
-  url: "https://cdn.htmlgames.com/HigherOrLower/",
-  image: "https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp",
-  type: "game"
-},
-
-{
-  title: "City Sniper",
-  category: "game",
-  url: "https://cdn.htmlgames.com/CitySniper/",
-  image: "https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png",
-  type: "game"
-},
-
-{
-  title: "Thief Puzzle",
-  category: "game",
-  url: "https://play.famobi.com/thief-puzzle",
-  image: "https://img.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg",
-  type: "game"
-},
-
-{
-  title: "Galaxy Shooter",
-  category: "game",
-  url: "https://cdn.htmlgames.com/GalaxyShooter/",
-  image: "https://cdn.htmlgames.com/GalaxyShooter/img/icon/icon-512x512.png",
-  type: "game"
-},
-
+  {
+    title: "Sus Video nicht gucken privates",
+    category: "sussy",
+    url: "https://www.youtube.com/embed/7Qwq9R3rQic?si=FD5dj7AqQzDm1YCF",
+    image: "https://raw.githubusercontent.com/shipnigmoaxnugget-beep/Thejohanneshub/refs/heads/main/mediasrc/IMG_0423.gif",
+    type: "youtube"
+  },
+  {
+    title: "sussy haha",
+    category: "sussy",
+    url: "https://www.youtube.com/embed/XM6QTyWo820?si=QXqA-H0PqaHCXlq4",
+    image: "https://tenor.com/de-AT/view/ayo-sus-gif-27096256.gif",
+    type: "youtube"
+  },
+  {
+    title: "sussyman episode 1",
+    category: "sussy",
+    url: "https://www.tiktok.com/@follow67420/video/7619238987055762706",
+    image: "https://m.media-amazon.com/images/I/71IHB9-yapL.png",
+    type: "tiktok"
+  },
+  {
+    title: "SpacePinball",
+    category: "game",
+    url: "https://cdn.htmlgames.com/SpacePinball/",
+    image: "https://cdn.aptoide.com/imgs/1/b/1/1b1fa0c0dad30873323f0b001fc6e68e_icon.png?w=128",
+    type: "game"
+  },
+  {
+    title: "Higher or Lower",
+    category: "game",
+    url: "https://cdn.htmlgames.com/HigherOrLower/",
+    image: "https://www.denkspiele.com/uploaded/game/screenshot/higherorLower800480.webp",
+    type: "game"
+  },
+  {
+    title: "City Sniper",
+    category: "game",
+    url: "https://cdn.htmlgames.com/CitySniper/",
+    image: "https://www.sellmyapp.com/wp-content/uploads/featured_image63417aad1a69e.png",
+    type: "game"
+  },
+  {
+    title: "Thief Puzzle",
+    category: "game",
+    url: "https://play.famobi.com/thief-puzzle",
+    image: "https://img.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg",
+    type: "game"
+  },
+  {
+    title: "Galaxy Shooter",
+    category: "game",
+    url: "https://cdn.htmlgames.com/GalaxyShooter/",
+    image: "https://cdn.htmlgames.com/GalaxyShooter/img/icon/icon-512x512.png",
+    type: "game"
+  },
 ];
 
-function openGame(url, type){
+function openGame(url, type) {
   const detail = document.getElementById("gameDetail");
 
-  if(type === "tiktok"){
+  if (type === "tiktok") {
     const videoId = url.split("/video/")[1];
     detail.innerHTML = `
       <blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}" style="max-width:605px;min-width:325px;margin:auto;">
@@ -450,13 +442,12 @@ function openGame(url, type){
   document.getElementById("gameModal").style.display = "block";
 }
 
-// FIX: Close-Button funktioniert jetzt
-document.getElementById("closeGame").addEventListener("click", function(){
+document.getElementById("closeGame").addEventListener("click", function () {
   document.getElementById("gameModal").style.display = "none";
   document.getElementById("gameDetail").innerHTML = "";
 });
 
-function loadGames(){
+function loadGames() {
   const container = document.getElementById("gamesContainer");
   container.innerHTML = "";
   games.forEach(game => {
